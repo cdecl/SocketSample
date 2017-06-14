@@ -1,0 +1,64 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ClientSocket - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x412 /fo"Release/ClientSocket.res" /d "NDEBUG" /d "_AFXDLL" "E:\MyProjects\VC6\SocketTest\ClientSocket\ClientSocket.rc"" 
+Creating temporary file "C:\DOCUME~1\±èº´±Ô\LOCALS~1\Temp\RSP7D9.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Release/" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\MyProjects\VC6\SocketTest\AsyncSockClient.cpp"
+]
+Creating command line "cl.exe @"C:\DOCUME~1\±èº´±Ô\LOCALS~1\Temp\RSP7D9.tmp"" 
+Creating temporary file "C:\DOCUME~1\±èº´±Ô\LOCALS~1\Temp\RSP7DA.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Release/" /Fp"Release/ClientSocket.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\MyProjects\VC6\SocketTest\ClientSocket\AsyncSockClientImpl.cpp"
+"E:\MyProjects\VC6\SocketTest\ClientSocket\ClientSocket.cpp"
+"E:\MyProjects\VC6\SocketTest\ClientSocket\ClientSocketDlg.cpp"
+]
+Creating command line "cl.exe @"C:\DOCUME~1\±èº´±Ô\LOCALS~1\Temp\RSP7DA.tmp"" 
+Creating temporary file "C:\DOCUME~1\±èº´±Ô\LOCALS~1\Temp\RSP7DB.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Release/" /Fp"Release/ClientSocket.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\MyProjects\VC6\SocketTest\ClientSocket\StdAfx.cpp"
+]
+Creating command line "cl.exe @"C:\DOCUME~1\±èº´±Ô\LOCALS~1\Temp\RSP7DB.tmp"" 
+Creating temporary file "C:\DOCUME~1\±èº´±Ô\LOCALS~1\Temp\RSP7DC.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/ClientSocket.pdb" /machine:I386 /out:"Release/ClientSocket.exe" 
+.\Release\AsyncSockClient.obj
+.\Release\AsyncSockClientImpl.obj
+.\Release\ClientSocket.obj
+.\Release\ClientSocketDlg.obj
+.\Release\StdAfx.obj
+.\Release\ClientSocket.res
+]
+Creating command line "link.exe @"C:\DOCUME~1\±èº´±Ô\LOCALS~1\Temp\RSP7DC.tmp""
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+AsyncSockClient.cpp
+Compiling...
+AsyncSockClientImpl.cpp
+ClientSocket.cpp
+ClientSocketDlg.cpp
+E:\MyProjects\VC6\SocketTest\ClientSocket\ClientSocketDlg.cpp(230) : warning C4018: '<=' : signed/unsigned mismatch
+Generating Code...
+Linking...
+Creating command line "bscmake.exe /nologo /o"Release/ClientSocket.bsc"  .\Release\StdAfx.sbr .\Release\AsyncSockClient.sbr .\Release\AsyncSockClientImpl.sbr .\Release\ClientSocket.sbr .\Release\ClientSocketDlg.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+ClientSocket.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

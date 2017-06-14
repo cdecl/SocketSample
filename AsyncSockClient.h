@@ -1,0 +1,101 @@
+// AsyncSockClient.h: interface for the AsyncSockClient class.
+//
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+// Copyright (c) 2003 by cdecl (byung-kyu kim)
+// EMail : cdecl@interpark.com
+//////////////////////////////////////////////////////////////////////
+#ifndef __ASYNCSOCKCLIENT_H__BY_CDECL__
+#define __ASYNCSOCKCLIENT_H__BY_CDECL__
+
+#include "WinSockInit.h"
+
+#include <cassert>
+#include <string>
+#include <algorithm>
+
+
+namespace GLASS {
+
+
+//////////////////////////////////////////////////////////////////
+// 비동기 클라이언트 소켓 
+class AsyncSockClient  
+{
+public:
+	enum { SZ_SIZE = 1024 };
+
+public:
+	AsyncSockClient();
+	virtual ~AsyncSockClient();
+
+public:
+	//////////////////////////////////////////////////////////////////
+	// Socket을 닫는다 
+	void Close();
+
+	//////////////////////////////////////////////////////////////////
+	// 연결을 한다 
+	bool Connect(const std::string &strIP, int nPort);
+
+public:
+	//////////////////////////////////////////////////////////////////
+	// 메세지를 받으면 Callback
+	virtual void OnRecv() {}
+
+	//////////////////////////////////////////////////////////////////
+	// 연결이 끊어지면 
+	virtual void OnClose() {}
+
+	//////////////////////////////////////////////////////////////////
+	// 메세지 보내기 
+	virtual int Send(const char *pBuff, size_t nLen, int nFlags = 0);
+
+	//////////////////////////////////////////////////////////////////
+	// 메세지 받기
+	virtual int Recv(char *pBuff, int nBuffLen, int nFlags = 0);
+
+public:
+	//////////////////////////////////////////////////////////////////
+	// GetPeerName
+	int GetPeerName(std::string &strPeerAddr, int &nPort) const;
+	int GetPeerName(sockaddr *pName, int *pNameLen) const;
+
+	//////////////////////////////////////////////////////////////////
+	// GetSockName
+	int GetSockName(std::string &strSockAddr, int &nPort) const;
+	int GetSockName(sockaddr *pName, int *pNameLen) const;
+
+	//////////////////////////////////////////////////////////////////
+	// Socket Option
+	int GetSockOpt(int nOptionName, char *lpOptionValue, int *lpOptionLen, int nLevel = SOL_SOCKET) const;
+	int SetSockOpt(int nOptionName, const char *lpOptionValue, int nOptionLen, int nLevel = SOL_SOCKET);
+
+
+	//////////////////////////////////////////////////////////////////
+	// 소켓의 recv 버퍼내용의 크기
+	ULONG GetSockBuffLen() const;
+
+	//////////////////////////////////////////////////////////////////
+	// 유효한 소켓이냐?
+	bool IsValidSocket() const;
+
+	
+private:
+	//////////////////////////////////////////////////////////////////
+	// Main Run Thread 
+	static UINT __stdcall MainRun(LPVOID lpvParam);
+
+private:
+	HandleManage hmThread_;
+	UINT nThreadID_;
+
+protected:
+	SOCKET sock_;
+};
+
+
+}	// namespace GLASS 
+
+#endif // __ASYNCSOCKCLIENT_H__BY_CDECL__
+
